@@ -1,5 +1,7 @@
-package com.code;
+package test.com.code;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
@@ -10,8 +12,10 @@ import java.util.Map;
 import java.util.Objects;
 
 @RestController
+@Api(value = "/")
 public class MygetMethod {
     @RequestMapping(value = "/getCookies",method = RequestMethod.GET)
+    @ApiOperation(value = "通过这方法可以获取cookies",httpMethod = "GET")
     public String getCookies(HttpServletResponse response){
         //HttpServletRequest  装请求信息的类
         //HttpServletResponse 装响应信息的类
@@ -21,6 +25,7 @@ public class MygetMethod {
     }
     //要求客户端携带cookies访问的get请求
     @RequestMapping(value = "/getwithcookies",method = RequestMethod.GET)
+    @ApiOperation(value = "要求客户端携带cookies访问的get请求",httpMethod = "GET")
     public String getwithcookies(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();
         if(Objects.isNull(cookies)){
@@ -36,6 +41,7 @@ public class MygetMethod {
     //要求带参数才能访问的get请求，2种方式
     //1、url:ip:port/getwithparam?key=value&key=value
     @RequestMapping(value = "/getwithparam",method = RequestMethod.GET)
+    @ApiOperation(value = "要求带参数才能访问的get请求1",httpMethod = "GET")
     public Map<String,Integer> getList(@RequestParam Integer start,@RequestParam Integer end){
         Map<String,Integer> myList = new HashMap<>();
         myList.put("鞋",400);myList.put("衣服",200);myList.put("帽子",50);
@@ -43,6 +49,7 @@ public class MygetMethod {
     }
     //2、url:ip:port/getwithparam/10/20
     @RequestMapping(value = "/getwithparam/{start}/{end}")
+    @ApiOperation(value = "要求带参数才能访问的get请求2",httpMethod = "GET")
     public Map myGetList(@PathVariable Integer start,@PathVariable Integer end){
         Map<String,Integer> myList = new HashMap<>();
         myList.put("鞋",400);myList.put("衣服",200);myList.put("帽子",50);

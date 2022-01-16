@@ -1,4 +1,4 @@
-package hello;
+package test.com.hello;
 
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
@@ -11,7 +11,7 @@ public class SampleController {
 
     @RequestMapping("/")
     @ResponseBody
-    String home() {
+    public String home() {
         return "Hello World!";
     }
 

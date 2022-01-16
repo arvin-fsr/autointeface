@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+logging:
+  file:
+    path: logs
+    name: mylog.log
+
+spring:
+  application:
+    name: myTest
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/user
+    username: root
+    password: 2022.com
+
+mybatis:
+  type-aliases-package: test.model
+  mapper-locations:
+    - mapper/*
